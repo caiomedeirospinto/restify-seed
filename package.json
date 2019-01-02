@@ -1,0 +1,35 @@
+{
+  "name": "restify-seed",
+  "version": "1.0.0",
+  "description": "A simple bootstrap project to create APIs with Restify library.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "debug": "supervisor -w 'index.js,routes/' --inspect --debug index.js",
+    "test": "jslint --indent 2 --color 'package.json' 'index.js' 'routes/**/*.js' 'common/**/*.js' && LOG_LEVEL=error mocha -c -u qunit --timeout 5000 tests"
+  },
+  "keywords": [
+    "restify",
+    "seed",
+    "Openshift",
+    "bunyan"
+  ],
+  "author": "Caio Medeiros Pinto <camedeir@redhat.com>",
+  "license": "MIT",
+  "dependencies": {
+    "bunyan": "^1.8.12",
+    "restify": "^7.3.0",
+    "restify-plugins": "^1.6.0"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "chai-http": "^4.2.1",
+    "jslint": "^0.12.0",
+    "mocha": "^5.2.0",
+    "supervisor": "^0.12.0"
+  },
+  "engine": {
+    "node": "*",
+    "npm": "*"
+  }
+}
