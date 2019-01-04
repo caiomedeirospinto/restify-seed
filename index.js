@@ -27,11 +27,11 @@ server.pre(plugins.pre.sanitizePath());
 /*jslint unparam:true*/
 // Default error handler. Personalize according to your needs.
 server.on('uncaughtException', function (req, res, route, err) {
-  console.log('******* Begin Error *******');
-  console.log(route);
-  console.log('*******');
-  console.log(err.stack);
-  console.log('******* End Error *******');
+  log.error('******* Begin Error *******');
+  log.error(route);
+  log.error('*******');
+  log.error(err.stack);
+  log.error('******* End Error *******');
   if (!res.headersSent) {
     return res.send(500, { ok : false });
   }
@@ -40,10 +40,13 @@ server.on('uncaughtException', function (req, res, route, err) {
 });
 /*jslint unparam:false*/
 
-server.on('after', plugins.auditLogger({ log: log }));
+if (process.env.AUDIT_LOG_ENABLED) {
+  server.on('after', plugins.auditLogger({ log: log }));
+}
+
 routes(server);
 
-console.log('Server started.');
+log.info('Server started.');
 
 server.listen(8080, function () {
   log.info('%s listening at %s', server.name, server.url);
