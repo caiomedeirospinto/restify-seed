@@ -6,7 +6,9 @@
   "scripts": {
     "start": "node index.js",
     "debug": "supervisor -w 'index.js,routes/' --inspect --debug index.js",
-    "test": "jslint --indent 2 --color 'package.json' 'index.js' 'routes/**/*.js' 'common/**/*.js' 'tests/**/*.js' && LOG_LEVEL=error mocha -c -u qunit --timeout 5000 --reporter mocha-junit-reporter --reporter-options mochaFile=./report.xml tests"
+    "containerized": "s2i s2i build . registry.access.redhat.com/rhoar-nodejs/nodejs-8 local-develop && docker run --rm local-develop",
+    "test": "jslint --indent 2 --color 'package.json' 'index.js' 'routes/**/*.js' 'common/**/*.js' 'tests/**/*.js' && LOG_LEVEL=error mocha -c -u qunit --timeout 5000 --reporter mocha-junit-reporter --reporter-options mochaFile=./report.xml tests",
+    "docs": ""
   },
   "keywords": [
     "restify",
