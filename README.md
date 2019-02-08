@@ -1,8 +1,22 @@
 # Restify Seed
-Base project to start a API Rest developmemt
----
 
-https://img.shields.io/github/license/caiomedeirospinto/restify-seed.svg?style=flat
+![Last release](https://img.shields.io/github/release/caiomedeirospinto/restify-seed.svg?style=flat)
+
+![Last release date](https://img.shields.io/github/release-date/caiomedeirospinto/restify-seed.svg?style=flat)
+
+![Last commit](https://img.shields.io/github/last-commit/caiomedeirospinto/restify-seed.svg?style=flat)
+
+![Build Status](https://travis-ci.org/caiomedeirospinto/restify-seed.svg?branch=master)
+
+![Issues](https://img.shields.io/github/issues/caiomedeirospinto/restify-seed.svg?style=flat)
+
+![Libraries.io](https://img.shields.io/librariesio/github/caiomedeirospinto/restify-seed.svg?style=flat)
+
+![Vulnerabilities](https://img.shields.io/snyk/vulnerabilities/github/caiomedeirospinto/restify-seed.svg?style=flat)
+
+![Code type percent](https://img.shields.io/github/languages/top/caiomedeirospinto/restify-seed.svg?style=flat)
+
+![License](https://img.shields.io/github/license/caiomedeirospinto/restify-seed.svg?style=flat)
 
 **Desarrollado por**: Caio Medeiros Pinto - Red Hat Chile Ltda.
 
@@ -52,7 +66,7 @@ For database integration:
 * **MongoDB**: this integration was maid using [Mongoose](https://www.npmjs.com/package/mongoose) library.
 * **MySql**: this integration was maid with [Sequelize](https://www.npmjs.com/package/sequelize) that is .
 
-## How to use?
+## How to use
 
 First, prepare your development environment installing the following components:
 
@@ -66,13 +80,36 @@ To execute in debug mode use the bellow command:
 ```bash
 # Directly on the host, this command execute another one that was configured in package.json as the debug action.
 $ npm run debug
+
+> restify-seed@1.0.0 debug /home/caio/Documentos/Consulting/restify-generator
+> supervisor -w 'index.js,routes/' --inspect --debug index.js
+
+
+Running node-supervisor with
+  program '--inspect --debug index.js'
+  --watch 'index.js,routes/'
+  --extensions 'node,js'
+  --exec 'node'
+
+Starting child process with 'node --inspect --debug index.js'
+Watching directory '/home/caio/Documentos/Consulting/restify-generator/index.js' for changes.
+Press rs for restarting the process.
+Watching directory '/home/caio/Documentos/Consulting/restify-generator/routes' for changes.
+Press rs for restarting the process.
+Debugger listening on ws://127.0.0.1:9229/afff16c9-ba6c-4704-a459-1d375fdb31fe
+For help see https://nodejs.org/en/docs/inspector
+{"name":"restify-seed","hostname":"cm-workstation","pid":11802,"level":30,"msg":"Server started.","time":"2019-02-08T20:33:35.625Z","v":0}
+{"name":"restify-seed","hostname":"cm-workstation","pid":11802,"level":30,"msg":"restify-seed listening at http://[::]:8080","time":"2019-02-08T20:33:35.629Z","v":0}
+
 # Containerized with Docker, this process used s2i and docker to execut the code.
 $ npm run containerized
+
+
 ```
 
 The main file is `index.js` that has the base code of the service, there's principals configurations and these are:
 
-**Web server configuration**
+### Web server configuration
 
 ```javascript
 ...
@@ -83,7 +120,7 @@ server = restify.createServer({
 ...
 ```
 
-**Logger class configuration**
+### Logger class configuration
 
 ```javascript
 ...
@@ -134,12 +171,31 @@ List of environment variables available:
 * **LOG_LEVEL**: API verbosity that can be set with any of these values: info (Default value), debug, error, warn.
 * **AUDIT_LOG_ENABLED**: enable the audit logs.
 
-## How to test?
+## How to test
 
-To execute the testing tasks 
+To execute the testing tasks:
 
 ```bash
-$ npm run test
+$ npm test
+
+> restify-seed@1.0.0 test /home/caio/Documentos/Consulting/restify-generator
+> jslint --indent 2 --color 'package.json' 'index.js' 'routes/**/*.js' 'common/**/*.js' 'tests/**/*.js' && LOG_LEVEL=error mocha -c -u qunit --timeout 5000 --reporter mocha-junit-reporter --repor
+ter-options mochaFile=./report.xml tests
+
+
+package.json is OK.
+
+index.js is OK.
+
+routes/health.js is OK.
+
+routes/index.js is OK.
+
+common/health.js is OK.
+
+tests/integration.test.js is OK.
+
+tests/unit.test.js is OK.
 ```
 
 Para crear pruebas automáticas revisar el formato utilizado para ellas en los archivos `tests/unit.test.js` y `tests/integration.test.js`.
