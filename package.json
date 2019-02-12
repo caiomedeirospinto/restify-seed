@@ -5,9 +5,10 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "debug": "supervisor -w 'index.js,routes/' --inspect --debug index.js",
+    "debug": "node_modules/.bin/supervisor -w 'index.js,routes/' --inspect --debug index.js",
     "containerized": "s2i build -q . registry.access.redhat.com/rhoar-nodejs/nodejs-8 local-develop && docker run --rm -p 8080:8080 local-develop",
-    "test": "jslint --indent 2 --color 'package.json' 'index.js' 'routes/**/*.js' 'common/**/*.js' 'tests/**/*.js' && LOG_LEVEL=error mocha -c -u qunit --timeout 5000 --reporter mocha-junit-reporter --reporter-options mochaFile=./report.xml tests",
+    "test": "node_modules/.bin/jslint --indent 2 --color 'package.json' 'index.js' 'routes/**/*.js' 'common/**/*.js' 'tests/**/*.js' && LOG_LEVEL=error node_modules/.bin/mocha -c -u qunit --timeout 5000 tests",
+    "report": "node_modules/.bin/jslint --indent 2 --color 'package.json' 'index.js' 'routes/**/*.js' 'common/**/*.js' 'tests/**/*.js' && LOG_LEVEL=error node_modules/.bin/mocha -c -u qunit --timeout 5000 --reporter mocha-junit-reporter --reporter-options mochaFile=./report.xml tests",
     "docs": ""
   },
   "keywords": [
