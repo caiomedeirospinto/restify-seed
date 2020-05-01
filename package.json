@@ -9,7 +9,9 @@
     "containerized": "s2i build --run --rm -e NODE_ENV=default . registry.access.redhat.com/rhoar-nodejs/nodejs-8 local-develop",
     "test": "node_modules/.bin/jslint --indent 2 --color 'package.json' 'index.js' 'routes/**/*.js' 'common/**/*.js' 'tests/**/*.js' && LOG_LEVEL=error node_modules/.bin/mocha -c -u qunit --timeout 5000 tests",
     "report": "node_modules/.bin/jslint --indent 2 --color 'package.json' 'index.js' 'routes/**/*.js' 'common/**/*.js' 'tests/**/*.js' && LOG_LEVEL=error node_modules/.bin/mocha -c -u qunit --timeout 5000 --reporter mocha-junit-reporter --reporter-options mochaFile=./report.xml tests",
-    "docs": ""
+    "docs": "",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
   },
   "keywords": [
     "Restify",
@@ -24,7 +26,8 @@
   "dependencies": {
     "bunyan": "^2.0.2",
     "restify": "^7.3.0",
-    "restify-plugins": "^1.6.0"
+    "restify-plugins": "^1.6.0",
+    "snyk": "^1.316.1"
   },
   "devDependencies": {
     "chai": "^4.2.0",
@@ -45,5 +48,6 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/caiomedeirospinto/restify-seed"
-  }
+  },
+  "snyk": true
 }
