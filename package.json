@@ -23,7 +23,7 @@
   "license": "MIT",
   "dependencies": {
     "bunyan": "^2.0.2",
-    "restify": "^7.3.0",
+    "restify": "^8.0.0",
     "restify-plugins": "^1.6.0"
   },
   "devDependencies": {
