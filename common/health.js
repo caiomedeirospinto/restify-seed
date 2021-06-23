@@ -2,6 +2,6 @@
 'use strict';
 module.exports = {
   v1: {
-    ok: true
+    funcionando: true
   }
 };
