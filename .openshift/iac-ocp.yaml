@@ -14,8 +14,8 @@ healthcheck: &healthcheck
   initialDelaySeconds: 10
   periodSeconds: 3
 environments: &environments
-  - name: PORT
-    value: "8080"
+  - name: HELLO_NAME
+    value: "World"
 
 # Deployment as code
 serverless:
