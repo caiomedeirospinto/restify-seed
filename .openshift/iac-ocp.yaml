@@ -21,7 +21,6 @@ environments: &environments
 serverless:
   nameOverride: *nameOverride
   partOf: *partOf
-  teamName: my-team
   repository: *repository
   runtime: *runtime
   envs: *environments
