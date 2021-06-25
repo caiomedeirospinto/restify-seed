@@ -12,3 +12,6 @@ node_modules
 config.gypi
 *.orig
 report.xml
+
+.openshift/charts
+.openshift/Chart.lock

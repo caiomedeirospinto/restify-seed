@@ -1,0 +1,42 @@
+# General configuration
+nameOverride: &nameOverride ms-healthcheck
+partOf: &partOf app-1
+repository: &repository
+  url: https://github.com/caiomedeirospinto/restify-seed.git
+  ref: master
+  path: "."
+runtime: &runtime
+  name: nodejs
+  version: 14-ubi7
+healthcheck: &healthcheck
+  httpGet:
+    path: /health
+  initialDelaySeconds: 10
+  periodSeconds: 3
+environments: &environments
+  - name: HELLO_NAME
+    value: "World"
+
+# Deployment as code
+serverless:
+  nameOverride: *nameOverride
+  partOf: *partOf
+  repository: *repository
+  runtime: *runtime
+  envs: *environments
+  readinessProbe: *healthcheck
+  livenessProbe: *healthcheck
+  resources:
+    limits:
+      cpu: 100m
+      memory: 100Mi
+    requests:
+      cpu: 50m
+      memory: 50Mi
+
+# Pipeline as code
+nodejs:
+  nameOverride: *nameOverride
+  partOf: *partOf
+  repository: *repository
+  runtime: *runtime
