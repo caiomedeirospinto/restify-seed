@@ -1,0 +1,9 @@
+apiVersion: v2
+name: the-open-shifters-triggers
+type: application
+version: 0.1.0
+appVersion: 1.16.0
+dependencies:
+- name: triggers
+  version: "0.1.0"
+  repository: "http://nexus-nexus.apps.sbpay-sandbox-1.servicios-mksa.cl/repository/helm-charts/"
