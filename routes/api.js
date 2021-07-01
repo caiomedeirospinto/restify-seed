@@ -7,7 +7,7 @@ module.exports = function (server) {
   var helloWorld = function (req, res, next) {
     server.log.debug("Hello World function execution.");
     res.send({
-      message: "Hello World!!"
+      message: "Hello World!"
     });
     return next();
   };
