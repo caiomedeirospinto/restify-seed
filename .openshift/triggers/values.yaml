@@ -1,7 +1,7 @@
 triggers:
   nameOverride: my-team-triggers
   apps:
-  - name: rms-healthcheck
+  - name: restify-seed
     project: developer-workflow
     enabled: true
     environments:
