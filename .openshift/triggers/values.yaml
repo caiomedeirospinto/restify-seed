@@ -1,0 +1,33 @@
+triggers:
+  nameOverride: my-team-triggers
+  apps:
+  - name: restify-seed
+    project: developer-workflow
+    enabled: true
+    environments:
+    - name: dev
+      kind: ci
+      volumeSize: 1Gi
+      ref:
+        value: develop
+        kind: heads
+      event: push
+    - name: staging
+      kind: cd
+      ref:
+        value: master
+        kind: heads
+      event: pull_request
+    - name: prod
+      kind: cd
+      ref:
+        value: ^v.+
+        kind: tags
+      event: push
+  resources:
+    limits:
+      cpu: 500m
+      memory: 128Mi
+    requests:
+      cpu: 250m
+      memory: 64Mi

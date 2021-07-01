@@ -1,5 +1,5 @@
 # General configuration
-nameOverride: &nameOverride ms-healthcheck
+nameOverride: &nameOverride restify-seed
 partOf: &partOf app-1
 repository: &repository
   url: https://github.com/caiomedeirospinto/restify-seed.git
