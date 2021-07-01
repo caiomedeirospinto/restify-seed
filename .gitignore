@@ -15,3 +15,6 @@ report.xml
 
 .openshift/charts
 .openshift/Chart.lock
+
+.openshift/triggers/charts
+.openshift/triggers/Chart.lock
